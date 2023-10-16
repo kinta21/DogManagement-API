@@ -81,3 +81,4 @@ public class Dog {
     public int hashCode() {
         return Objects.hash(id, name, sex, dogBreed, region);}
 }
+
