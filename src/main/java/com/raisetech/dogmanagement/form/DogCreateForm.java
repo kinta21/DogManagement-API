@@ -1,21 +1,31 @@
 package com.raisetech.dogmanagement.form;
 
-import lombok.Data;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+
 public class DogCreateForm {
+    @NotBlank
+    @Size(min = 1, max = 30, message="30文字以内で入力してください。")
     private String name;
-    private String sex;
-    private String age;
-    private String dogBreed;
-    private String region;
 
-    public DogCreateForm(String name, String sex, String age, String dogBreed, String region) {
-        this.name = name;
-        this.sex = sex;
-        this.age = age;
-        this.dogBreed = dogBreed;
-        this.region = region;
-    }
+    @NotBlank
+    private String sex;
+
+    @NotBlank
+    private String age;
+
+    @NotBlank
+    @Size(min = 1, max = 30, message="30文字以内で入力してください。")
+    private String dogBreed;
+
+    @NotBlank
+    private String region;
 }
 

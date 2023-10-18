@@ -3,6 +3,7 @@ package com.raisetech.dogmanagement.controller;
 import com.raisetech.dogmanagement.entity.Dog;
 import com.raisetech.dogmanagement.form.DogCreateForm;
 import com.raisetech.dogmanagement.service.DogServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +31,7 @@ public class DogController {
     }
 
     @PostMapping("/dogs")
-    public ResponseEntity<Dog> createDog(@RequestBody DogCreateForm dogCreateForm, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<Dog> createDog(@RequestBody @Valid DogCreateForm dogCreateForm, UriComponentsBuilder uriBuilder) {
         Dog dog = dogService.createDog(dogCreateForm.getName(), dogCreateForm.getSex(), dogCreateForm.getAge(), dogCreateForm.getDogBreed(), dogCreateForm.getRegion());
         URI url = uriBuilder
                 .path("/dogs/" + dog.getId())

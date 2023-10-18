@@ -31,7 +31,7 @@ class DogServiceImplTest {
     @Nested
     class FindByDogTest{
         @Test
-        public void 存在する犬のIDを指定した際に正常に犬の情報が返されること() throws Exception {
+        public void 存在する犬のIDを指定した際に正常に犬の情報が返されること(){
         doReturn(Optional.of(new Dog(1, "シロ", "オス", "1歳", "フレンチ・ブルドック", "東北"))).when(dogMapper).findById(1);
 
         Dog actual = dogServiceImpl.findById(1);
@@ -39,7 +39,7 @@ class DogServiceImplTest {
         verify(dogMapper, times(1)).findById(1);
     }
         @Test
-        public void 存在しない犬のIDを指定した際に例外が返されること() throws Exception{
+        public void 存在しない犬のIDを指定した際に例外が返されること(){
         doReturn(Optional.empty()).when(dogMapper).findById(6);
 
         assertThatThrownBy(
@@ -57,7 +57,7 @@ class DogServiceImplTest {
             Dog dog = new Dog("おはぎ", "オス", "1歳", "パグ", "東北");
             doNothing().when(dogMapper).createDog(dog);
 
-            assertThat(dogServiceImpl.createDog(form.getName(), form.getSex(), form.getAge(), form.getDogBreed(), form.getRegion())).isEqualTo(dog);
+            assertThat(dogServiceImpl.createDog("おはぎ", "オス", "1歳", "パグ", "東北")).isEqualTo(dog);
             verify(dogMapper, times(1)).createDog(dog);
         }
     }
