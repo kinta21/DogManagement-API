@@ -7,5 +7,7 @@ public interface DogService {
     Dog findById(int id);
 
     Dog createDog(String name, String sex, String age, String dogBreed, String region);
+
+    void updateDog(int id, String name, String sex, String age, String dogBreed, String region);
 }
 

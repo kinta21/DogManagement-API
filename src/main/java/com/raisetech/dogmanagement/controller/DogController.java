@@ -2,10 +2,12 @@ package com.raisetech.dogmanagement.controller;
 
 import com.raisetech.dogmanagement.entity.Dog;
 import com.raisetech.dogmanagement.form.DogCreateForm;
+import com.raisetech.dogmanagement.form.DogUpdateForm;
 import com.raisetech.dogmanagement.service.DogServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Map;
 
 @RestController
 public class DogController {
@@ -38,6 +41,12 @@ public class DogController {
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body(dog);
+    }
+
+    @PatchMapping("/dogs/{id}")
+    public ResponseEntity<Map<String, String >> updateDog(@PathVariable int id, @RequestBody DogUpdateForm dogUpdateForm) throws Exception {
+        dogService.updateDog(id, dogUpdateForm.getName(), dogUpdateForm.getSex(), dogUpdateForm.getAge(), dogUpdateForm.getDogBreed(), dogUpdateForm.getRegion());
+        return ResponseEntity.ok(Map.of("message", "dog successfully updated"));
     }
 }
 
