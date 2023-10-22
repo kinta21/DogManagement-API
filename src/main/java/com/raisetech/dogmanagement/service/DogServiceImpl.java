@@ -21,4 +21,12 @@ public class DogServiceImpl implements DogService {
         Optional<Dog> dog =this.dogMapper.findById(id);
         return dog.orElseThrow(() -> new NotDogFoundException("resource not found"));
     }
+
+    @Override
+    public Dog createDog(String name, String sex, String age, String dogBreed, String region) {
+        Dog dogData = new Dog(name, sex, age, dogBreed, region);
+        dogMapper.createDog(dogData);
+        return dogData;
+    }
 }
+

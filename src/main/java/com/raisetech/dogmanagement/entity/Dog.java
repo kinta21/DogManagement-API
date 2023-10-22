@@ -19,6 +19,14 @@ public class Dog {
         this.region = region;
     }
 
+    public Dog(String name, String sex, String age, String dogBreed, String region) {
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+        this.dogBreed = dogBreed;
+        this.region = region;
+    }
+
     public int getId() {
         return id;
     }
