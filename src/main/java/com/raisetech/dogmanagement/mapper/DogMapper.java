@@ -15,11 +15,11 @@ public interface DogMapper {
     @Select("SELECT * FROM dogs WHERE id = #{id}")
     Optional<Dog> findById(int id);
 
-    @Insert("INSERT INTO dogs (name, sex, age, dogBreed, region) VALUES (#{name},#{sex},#{age},#{dogBreed},#{region})")
+    @Insert("INSERT INTO dogs (name, dogSex, age, dogBreed, region) VALUES (#{name},#{dogSex},#{age},#{dogBreed},#{region})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void createDog (Dog createDog);
 
-    @Update("UPDATE dogs SET name = #{name}, sex =#{sex}, age = #{age}, dogBreed = #{dogBreed}, region = #{region} WHERE id = #{id}")
+    @Update("UPDATE dogs SET name = #{name}, dogSex =#{dogSex}, age = #{age}, dogBreed = #{dogBreed}, region = #{region} WHERE id = #{id}")
     void updateDog(Dog updateDog);
 }
 

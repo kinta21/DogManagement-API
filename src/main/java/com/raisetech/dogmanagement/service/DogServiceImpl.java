@@ -1,6 +1,7 @@
 package com.raisetech.dogmanagement.service;
 
 import com.raisetech.dogmanagement.entity.Dog;
+import com.raisetech.dogmanagement.entity.DogSex;
 import com.raisetech.dogmanagement.exception.NotDogFoundException;
 import com.raisetech.dogmanagement.mapper.DogMapper;
 import org.springframework.stereotype.Service;
@@ -23,23 +24,21 @@ public class DogServiceImpl implements DogService {
     }
 
     @Override
-    public Dog createDog(String name, String sex, String age, String dogBreed, String region) {
-        Dog dogData = new Dog(name, sex, age, dogBreed, region);
+    public Dog createDog(String name, DogSex dogSex, String age, String dogBreed, String region) {
+        Dog dogData = new Dog(name, dogSex, age, dogBreed, region);
         dogMapper.createDog(dogData);
         return dogData;
     }
 
     @Override
-    public void updateDog(int id, String name, String sex, String age, String dogBreed, String region)  {
+    public void updateDog(int id, String name, DogSex dogSex, String age, String dogBreed, String region) {
         Dog dog = dogMapper.findById(id).orElseThrow(() -> new NotDogFoundException("resource not found"));
         dog.setName(name);
-        dog.setSex(sex);
+        dog.setDogSex(dogSex);
         dog.setAge(age);
         dog.setDogBreed(dogBreed);
         dog.setRegion(region);
         dogMapper.updateDog(dog);
-
-
     }
 }
 

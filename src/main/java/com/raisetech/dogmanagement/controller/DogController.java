@@ -35,7 +35,7 @@ public class DogController {
 
     @PostMapping("/dogs")
     public ResponseEntity<Dog> createDog(@RequestBody @Valid DogCreateForm dogCreateForm, UriComponentsBuilder uriBuilder) {
-        Dog dog = dogService.createDog(dogCreateForm.getName(), dogCreateForm.getSex(), dogCreateForm.getAge(), dogCreateForm.getDogBreed(), dogCreateForm.getRegion());
+        Dog dog = dogService.createDog(dogCreateForm.getName(), dogCreateForm.getDogSex(), dogCreateForm.getAge(), dogCreateForm.getDogBreed(), dogCreateForm.getRegion());
         URI url = uriBuilder
                 .path("/dogs/" + dog.getId())
                 .build()
@@ -45,7 +45,7 @@ public class DogController {
 
     @PatchMapping("/dogs/{id}")
     public ResponseEntity<Map<String, String >> updateDog(@PathVariable int id, @RequestBody DogUpdateForm dogUpdateForm) throws Exception {
-        dogService.updateDog(id, dogUpdateForm.getName(), dogUpdateForm.getSex(), dogUpdateForm.getAge(), dogUpdateForm.getDogBreed(), dogUpdateForm.getRegion());
+        dogService.updateDog(id, dogUpdateForm.getName(), dogUpdateForm.getDogSex(), dogUpdateForm.getAge(), dogUpdateForm.getDogBreed(), dogUpdateForm.getRegion());
         return ResponseEntity.ok(Map.of("message", "dog successfully updated"));
     }
 }
