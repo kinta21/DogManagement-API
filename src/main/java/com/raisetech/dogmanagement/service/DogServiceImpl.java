@@ -28,5 +28,18 @@ public class DogServiceImpl implements DogService {
         dogMapper.createDog(dogData);
         return dogData;
     }
+
+    @Override
+    public void updateDog(int id, String name, String sex, String age, String dogBreed, String region)  {
+        Dog dog = dogMapper.findById(id).orElseThrow(() -> new NotDogFoundException("resource not found"));
+        dog.setName(name);
+        dog.setSex(sex);
+        dog.setAge(age);
+        dog.setDogBreed(dogBreed);
+        dog.setRegion(region);
+        dogMapper.updateDog(dog);
+
+
+    }
 }
 
