@@ -12,5 +12,14 @@ public enum DogSex {
     public String getDogSex() {
         return dogSex;
     }
+
+    public static DogSex from(String dogSex) {
+        for (DogSex d : DogSex.values()) {
+            if (d.getDogSex().equals(dogSex)) {
+                return d;
+            }
+        }
+        return null;
+    }
 }
 
