@@ -1,16 +1,15 @@
 package com.raisetech.dogmanagement.entity;
 
-public enum DogSex {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
+ public enum DogSex {
     MALE("オス"), FEMALE("メス");
 
-    private String dogSex;
+    private String value;
 
-    DogSex(String dogSex) {
-        this.dogSex = dogSex;
-    }
-
-    public String getDogSex() {
-        return dogSex;
-    }
 }
+
 
