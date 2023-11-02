@@ -15,24 +15,22 @@ import java.sql.SQLException;
 public class EnumTypeHandler extends BaseTypeHandler<DogSex> {
     @Override
     public void setNonNullParameter(PreparedStatement ps, int i, DogSex parameter, JdbcType jdbcType) throws SQLException {
-        ps.setString(i, parameter.getValue());
+        ps.setString(i, parameter.getDogSex());
     }
 
     @Override
     public DogSex getNullableResult(ResultSet rs, String columnName) throws SQLException {
-        String DogSex = (rs.getString(columnName));
-        return null;
+        return DogSex.from(rs.getString(columnName));
     }
 
     @Override
     public DogSex getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
-        String DogSex = (rs.getString(columnIndex));
-        return null;
+        return DogSex.from(rs.getString(columnIndex));
     }
 
     @Override
     public DogSex getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
-        String DogSex = (cs.getString(columnIndex));
-        return null;
+        return DogSex.valueOf(cs.getString(columnIndex));
     }
 }
+
