@@ -5,11 +5,11 @@ import com.raisetech.dogmanagement.entity.DogSex;
 
 public class DogResponse {
     private int id;
-    private  String name;
+    private String name;
     private DogSex dogSex;
-    private  String age;
-    private  String dogBreed;
-    private  String region;
+    private String age;
+    private String dogBreed;
+    private String region;
 
     public DogResponse(Dog dog) {
         this.id = dog.getId();
@@ -28,17 +28,19 @@ public class DogResponse {
         return name;
     }
 
-    public  DogSex getDogSex(){return dogSex;}
+    public String getDogSex() {
+        return dogSex.getDogSex();}
 
-    public String getAge() {
-        return age;
+        public String getAge () {
+            return age;
+        }
+
+        public String getDogBreed () {
+            return dogBreed;
+        }
+
+        public String getRegion () {
+            return region;
+        }
     }
 
-    public String getDogBreed() {
-        return dogBreed;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-}
