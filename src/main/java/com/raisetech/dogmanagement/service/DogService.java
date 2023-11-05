@@ -10,5 +10,7 @@ public interface DogService {
     Dog createDog(String name, DogSex dogSex, String age, String dogBreed, String region);
 
     void updateDog(int id, String name, DogSex dogSex, String age, String dogBreed, String region);
+
+    void deleteById(int id);
 }
 

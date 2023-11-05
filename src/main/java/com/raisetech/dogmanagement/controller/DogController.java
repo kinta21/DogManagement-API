@@ -6,6 +6,7 @@ import com.raisetech.dogmanagement.form.DogUpdateForm;
 import com.raisetech.dogmanagement.service.DogServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,6 +48,12 @@ public class DogController {
     public ResponseEntity<Map<String, String >> updateDog(@PathVariable int id, @RequestBody DogUpdateForm dogUpdateForm) throws Exception {
         dogService.updateDog(id, dogUpdateForm.getName(), dogUpdateForm.getDogSex(), dogUpdateForm.getAge(), dogUpdateForm.getDogBreed(), dogUpdateForm.getRegion());
         return ResponseEntity.ok(Map.of("message", "dog successfully updated"));
+    }
+
+    @DeleteMapping("/dogs/{id}")
+    public ResponseEntity<Map<String, String>> deleteById(@PathVariable int id) {
+        dogService.deleteById(id);
+        return ResponseEntity.ok(Map.of("message", "dog successfully delete"));
     }
 }
 

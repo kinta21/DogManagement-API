@@ -1,4 +1,4 @@
-package com.raisetech.dogmanagement;
+package com.raisetech.dogmanagement.controller;
 
 import com.raisetech.dogmanagement.entity.DogSex;
 import org.apache.ibatis.type.BaseTypeHandler;

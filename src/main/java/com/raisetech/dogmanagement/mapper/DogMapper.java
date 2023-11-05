@@ -1,6 +1,7 @@
 package com.raisetech.dogmanagement.mapper;
 
 import com.raisetech.dogmanagement.entity.Dog;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -21,5 +22,8 @@ public interface DogMapper {
 
     @Update("UPDATE dogs SET name = #{name}, dogSex =#{dogSex}, age = #{age}, dogBreed = #{dogBreed}, region = #{region} WHERE id = #{id}")
     void updateDog(Dog updateDog);
+
+    @Delete("DELETE FROM dogs WHERE id = #{id}")
+    void deleteById(int id);
 }
 

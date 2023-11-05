@@ -40,5 +40,11 @@ public class DogServiceImpl implements DogService {
         dog.setRegion(region);
         dogMapper.updateDog(dog);
     }
+
+    @Override
+    public void deleteById(int id) {
+        dogMapper.findById(id).orElseThrow(() -> new NotDogFoundException("resource not found"));
+        dogMapper.deleteById(id);
+    }
 }
 
