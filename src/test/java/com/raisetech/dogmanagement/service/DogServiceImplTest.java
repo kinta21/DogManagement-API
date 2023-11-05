@@ -88,12 +88,24 @@ class DogServiceImplTest {
     @Nested
     class DeleteDogTest{
         @Test
-            public void 指定したIDの犬のデータが削除できること(){
+        public void 指定したIDのデータが削除できること(){
                 doReturn(Optional.of(new Dog(1, "シロ", DogSex.MALE, "1歳", "フレンチ・ブルドック", "東北"))).when(dogMapper).findById(1);
                 dogServiceImpl.deleteById(1);
                 verify(dogMapper,times(1)).findById(1);
                 verify(dogMapper,times(1)).deleteById(1);
 
             }
+
+        @Test
+        public void 存在しないIDのデータを削除したときに例外を返すこと() {
+            doReturn(Optional.empty()).when(dogMapper).findById(99);
+
+            assertThatThrownBy(
+                    () -> dogServiceImpl.deleteById(99)
+            ).isInstanceOfSatisfying(
+                    NotDogFoundException.class, e -> assertThat(e.getMessage()).isEqualTo("resource not found"));
+            verify(dogMapper, times(1)).findById(99);
         }
     }
+}
+
