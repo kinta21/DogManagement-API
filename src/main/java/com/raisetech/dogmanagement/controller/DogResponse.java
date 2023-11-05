@@ -11,7 +11,7 @@ public class DogResponse {
     private String dogBreed;
     private String region;
 
-    public DogResponse(Dog dog) {
+public DogResponse(Dog dog) {
         this.id = dog.getId();
         this.name = dog.getName();
         this.dogSex = dog.getDogSex();
@@ -31,16 +31,19 @@ public class DogResponse {
     public String getDogSex() {
         return dogSex.getDogSex();}
 
-        public String getAge () {
-            return age;
-        }
-
-        public String getDogBreed () {
-            return dogBreed;
-        }
-
-        public String getRegion () {
-            return region;
-        }
+    public String getAge() {
+        return age;
     }
 
+    public String getAge () {
+            return age;
+    }
+
+    public String getDogBreed () {
+            return dogBreed;
+    }
+
+    public String getRegion () {
+            return region;
+    }    
+}
