@@ -1,5 +1,6 @@
 package com.raisetech.dogmanagement.form;
 
+import com.raisetech.dogmanagement.entity.DogSex;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -16,7 +17,7 @@ public class DogCreateForm {
     private String name;
 
     @NotBlank
-    private String sex;
+    private DogSex dogSex;
 
     @NotBlank
     private String age;
