@@ -23,7 +23,7 @@ class DogMapperTest {
     @Test
     @DataSet(value = "databases/dogs.yml")
     @Transactional
-    void 存在する犬のIDを指定した時に正常に犬の情報が返されること() {
+    void 存在する犬のIDを指定した時に正常に犬の情報が取得できること() {
         assertThat(dogMapper.findById(1)).
                 contains(new Dog(1, "シロ", DogSex.MALE, "1歳", "フレンチ・ブルドック", "東北"));
     }
@@ -31,7 +31,7 @@ class DogMapperTest {
     @Test
     @DataSet(value = "databases/dogs.yml")
     @Transactional
-    void 存在しない犬のIDを指定した際に例外を返すこと(){
+    void 存在しない犬のIDを指定した際に空のOptionalを取得すること(){
         assertThat(dogMapper.findById(99)).isEmpty();
     }
 }
