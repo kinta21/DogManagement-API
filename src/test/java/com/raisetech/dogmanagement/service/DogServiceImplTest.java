@@ -51,7 +51,7 @@ class DogServiceImplTest {
     }
 
     @Nested
-    class  CreateDogTest {
+    class CreateDogTest {
         @Test
         public void formから取得した内容で犬の情報が登録できること() {
             DogCreateForm form = new DogCreateForm("おはぎ", DogSex.MALE, "1歳", "パグ", "東北");
