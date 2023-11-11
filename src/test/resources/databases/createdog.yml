@@ -34,10 +34,3 @@ dogs:
     dogBreed: "チワワ"
     region: "関東"
 
-  - id: 6
-    name: "おはぎ"
-    dogSex: "オス"
-    age: "1歳"
-    dogBreed: "パグ"
-    region: "東北"
-
