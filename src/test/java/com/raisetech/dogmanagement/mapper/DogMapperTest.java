@@ -74,5 +74,24 @@ class DogMapperTest {
             dogMapper.updateDog(dog);
         }
     }
+
+    @Nested
+    class DeleteDogTest{
+
+        @Test
+        @DataSet(value = "databases/dogs.yml")
+        @ExpectedDataSet(value = "databases/deletedog.yml")
+        @Transactional
+        void 指定したIDの犬の情報を削除すること(){
+            dogMapper.deleteById(1);
+        }
+
+        @Test
+        @DataSet(value = "databases/dogs.yml")
+        @Transactional
+        void 指定したidが存在しないとき情報が削除されないこと(){
+            dogMapper.deleteById(99);
+        }
+    }
 }
 
