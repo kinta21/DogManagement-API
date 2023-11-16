@@ -52,5 +52,46 @@ class DogMapperTest {
             dogMapper.createDog(dog);
         }
     }
+
+    @Nested
+    class UpdateDogTest{
+
+        @Test
+        @DataSet(value = "databases/dogs.yml")
+        @ExpectedDataSet(value = "databases/updatedog.yml")
+        @Transactional
+        void 指定したidの犬の情報が更新できること(){
+            Dog dog = new Dog(1,"おはぎ", DogSex.MALE, "1歳", "パグ", "東北");
+            dogMapper.updateDog(dog);
+        }
+
+        @Test
+        @DataSet(value = "databases/dogs.yml")
+        @ExpectedDataSet(value = "databases/dogs.yml")
+        @Transactional
+        void 指定したidが存在しないとき更新されないこと(){
+            Dog dog = new Dog(99,"おはぎ", DogSex.MALE, "1歳", "パグ", "東北");
+            dogMapper.updateDog(dog);
+        }
+    }
+
+    @Nested
+    class DeleteDogTest{
+
+        @Test
+        @DataSet(value = "databases/dogs.yml")
+        @ExpectedDataSet(value = "databases/deletedog.yml")
+        @Transactional
+        void 指定したIDの犬の情報を削除すること(){
+            dogMapper.deleteById(1);
+        }
+
+        @Test
+        @DataSet(value = "databases/dogs.yml")
+        @Transactional
+        void 指定したidが存在しないとき情報が削除されないこと(){
+            dogMapper.deleteById(99);
+        }
+    }
 }
 

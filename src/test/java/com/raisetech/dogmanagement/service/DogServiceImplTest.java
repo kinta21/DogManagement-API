@@ -94,7 +94,7 @@ class DogServiceImplTest {
                 verify(dogMapper,times(1)).findById(1);
                 verify(dogMapper,times(1)).deleteById(1);
 
-            }
+        }
 
         @Test
         public void 存在しないIDのデータを削除したときに例外を返すこと() {

@@ -1,0 +1,29 @@
+dogs:
+  - id: 2
+    name: "豆きち"
+    dogSex: "オス"
+    age: "3-4ヶ月"
+    dogBreed: "柴犬"
+    region: "関東"
+
+  - id: 3
+    name: "チョコ"
+    dogSex: "メス"
+    age: "2歳"
+    dogBreed: "トイプードル"
+    region: "関東"
+
+  - id: 4
+    name: "ナナ"
+    dogSex: "メス"
+    age: "2歳"
+    dogBreed: "ミックス犬"
+    region: "関西"
+
+  - id: 5
+    name: "ポテト"
+    dogSex: "オス"
+    age: "2歳"
+    dogBreed: "チワワ"
+    region: "関東"
+
