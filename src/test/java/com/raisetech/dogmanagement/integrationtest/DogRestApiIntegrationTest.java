@@ -56,11 +56,9 @@ public class DogRestApiIntegrationTest {
         @DataSet(value = "databases/dogs.yml")
         @Transactional
         void 指定したIDが存在しない時ステータスコード404を返すこと() throws Exception {
-            String response =
                     mockMvc.perform(MockMvcRequestBuilders.get("/dogs/{id}", 99))
                             .andExpect(status().isNotFound())
                             .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
-
         }
     }
 }
