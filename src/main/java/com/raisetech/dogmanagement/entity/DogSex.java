@@ -7,7 +7,6 @@ import lombok.Getter;
 @Getter
 public enum DogSex {
     MALE("オス"), FEMALE("メス");
-
     private String dogSex;
 
     public static DogSex from(String dogSex) {
