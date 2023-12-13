@@ -5,12 +5,12 @@ import java.util.Objects;
 public class Dog {
     private int id;
     private String name;
-    private DogSex dogSex;
+    private String dogSex;
     private String age;
     private String dogBreed;
     private String region;
 
-    public Dog(int id, String name, DogSex dogSex, String age, String dogBreed, String region) {
+    public Dog(int id, String name, String dogSex, String age, String dogBreed, String region) {
         this.id = id;
         this.name = name;
         this.dogSex = dogSex;
@@ -19,13 +19,14 @@ public class Dog {
         this.region = region;
     }
 
-    public Dog(String name, DogSex dogSex, String age, String dogBreed, String region) {
+    public Dog(String name, String dogSex, String age, String dogBreed, String region) {
         this.name = name;
         this.dogSex = dogSex;
         this.age = age;
         this.dogBreed = dogBreed;
         this.region = region;
     }
+
 
     public int getId() {
         return id;
@@ -43,11 +44,11 @@ public class Dog {
         this.name = name;
     }
 
-    public DogSex getDogSex() {
+    public String getDogSex() {
         return dogSex;
     }
 
-    public void setDogSex(DogSex dogSex) {
+    public void setDogSex(String dogSex) {
         this.dogSex = dogSex;
     }
 
@@ -91,4 +92,3 @@ public class Dog {
     }
 
 }
-

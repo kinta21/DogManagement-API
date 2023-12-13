@@ -1,12 +1,11 @@
 package com.raisetech.dogmanagement.controller;
 
 import com.raisetech.dogmanagement.entity.Dog;
-import com.raisetech.dogmanagement.entity.DogSex;
 
 public class DogResponse {
     private int id;
     private String name;
-    private DogSex dogSex;
+    private String dogSex;
     private String age;
     private String dogBreed;
     private String region;
@@ -24,23 +23,48 @@ public class DogResponse {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
 
-    public String getDogSex() {
-        return dogSex.getDogSex();}
-
-        public String getAge () {
-            return age;
-        }
-
-        public String getDogBreed () {
-            return dogBreed;
-        }
-
-        public String getRegion () {
-            return region;
-        }
+    public void setName(String name) {
+        this.name = name;
     }
+
+    public String getDogSex() {
+        return dogSex;
+    }
+
+    public void setDogSex(String dogSex) {
+        this.dogSex = dogSex;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getDogBreed() {
+        return dogBreed;
+    }
+
+    public void setDogBreed(String dogBreed) {
+        this.dogBreed = dogBreed;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+}
 

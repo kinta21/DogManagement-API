@@ -89,6 +89,7 @@ public class DogRestApiIntegrationTest {
                             .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
             JSONAssert.assertEquals("""
                                       {
+                                        "id":6,
                                         "name":"おはぎ",
                                         "dogSex":"オス",
                                         "age":"1歳",
