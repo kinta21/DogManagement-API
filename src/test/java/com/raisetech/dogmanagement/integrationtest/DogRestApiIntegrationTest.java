@@ -5,8 +5,10 @@ import com.github.database.rider.core.api.dataset.ExpectedDataSet;
 import com.github.database.rider.spring.api.DBRider;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.skyscreamer.jsonassert.Customization;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
+import org.skyscreamer.jsonassert.comparator.CustomComparator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -75,8 +77,8 @@ public class DogRestApiIntegrationTest {
         void 犬の情報を新規登録できること() throws Exception{
             String response =
                     mockMvc.perform(MockMvcRequestBuilders.post("/dogs")
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .content("""
+                                    .contentType(MediaType.APPLICATION_JSON)
+                                    .content("""
                                         {
                                         "name":"おはぎ",
                                         "dogSex":"オス",
@@ -96,8 +98,16 @@ public class DogRestApiIntegrationTest {
                                         "dogBreed":"パグ",
                                         "region":"東北"
                                       }
-                                      """, response, JSONCompareMode.STRICT);
+                                      """, response,
+                    new CustomComparator(JSONCompareMode.STRICT,
+                            new Customization("id", ((o1, o2) -> true))));
         }
     }
 }
+
+
+
+
+
+
 
