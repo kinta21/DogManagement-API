@@ -36,7 +36,7 @@ public class DogController {
 
     @PostMapping("/dogs")
     public ResponseEntity<Dog> createDog(@RequestBody @Valid DogCreateForm dogCreateForm, UriComponentsBuilder uriBuilder) {
-        Dog dog = dogService.createDog(dogCreateForm.getName(),dogCreateForm.getDogSex(), dogCreateForm.getAge(), dogCreateForm.getDogBreed(), dogCreateForm.getRegion());
+        Dog dog = dogService.createDog(dogCreateForm.getName(), dogCreateForm.getDogSex(), dogCreateForm.getAge(), dogCreateForm.getDogBreed(), dogCreateForm.getRegion());
         URI url = uriBuilder
                 .path("/dogs/" + dog.getId())
                 .build()
