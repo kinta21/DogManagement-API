@@ -4,7 +4,6 @@ import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.core.api.dataset.ExpectedDataSet;
 import com.github.database.rider.spring.api.DBRider;
 import com.raisetech.dogmanagement.entity.Dog;
-import com.raisetech.dogmanagement.entity.DogSex;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
@@ -29,7 +28,7 @@ class DogMapperTest {
         @Transactional
         void 存在する犬のIDを指定した時に正常に犬の情報が取得できること() {
             assertThat(dogMapper.findById(1)).
-                    contains(new Dog(1, "シロ", DogSex.MALE, "1歳", "フレンチ・ブルドック", "東北"));
+                    contains(new Dog(1, "シロ", "オス", "1歳", "フレンチ・ブルドック", "東北"));
         }
 
         @Test
@@ -48,7 +47,7 @@ class DogMapperTest {
         @ExpectedDataSet(value = "databases/createdog.yml", ignoreCols = "id")
         @Transactional
         void 新規の犬の情報が登録できること(){
-            Dog dog = new Dog("おはぎ", DogSex.MALE, "1歳", "パグ", "東北");
+            Dog dog = new Dog("おはぎ", "オス", "1歳", "パグ", "東北");
             dogMapper.createDog(dog);
         }
     }
@@ -61,7 +60,7 @@ class DogMapperTest {
         @ExpectedDataSet(value = "databases/updatedog.yml")
         @Transactional
         void 指定したidの犬の情報が更新できること(){
-            Dog dog = new Dog(1,"おはぎ", DogSex.MALE, "1歳", "パグ", "東北");
+            Dog dog = new Dog(1,"おはぎ", "オス", "1歳", "パグ", "東北");
             dogMapper.updateDog(dog);
         }
 
@@ -70,7 +69,7 @@ class DogMapperTest {
         @ExpectedDataSet(value = "databases/dogs.yml")
         @Transactional
         void 指定したidが存在しないとき更新されないこと(){
-            Dog dog = new Dog(99,"おはぎ", DogSex.MALE, "1歳", "パグ", "東北");
+            Dog dog = new Dog(99,"おはぎ", "オス", "1歳", "パグ", "東北");
             dogMapper.updateDog(dog);
         }
     }
