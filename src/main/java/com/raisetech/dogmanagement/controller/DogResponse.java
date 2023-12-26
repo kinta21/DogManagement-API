@@ -10,7 +10,7 @@ public class DogResponse {
     private String dogBreed;
     private String region;
 
-    public DogResponse(Dog dog) {
+public DogResponse(Dog dog) {
         this.id = dog.getId();
         this.name = dog.getName();
         this.dogSex = dog.getDogSex();
@@ -67,4 +67,3 @@ public class DogResponse {
         this.region = region;
     }
 }
-
