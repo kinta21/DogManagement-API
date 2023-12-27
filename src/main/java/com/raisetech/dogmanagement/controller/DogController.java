@@ -45,7 +45,7 @@ public class DogController {
     }
 
     @PatchMapping("/dogs/{id}")
-    public ResponseEntity<Map<String, String >> updateDog(@PathVariable int id, @RequestBody DogUpdateForm dogUpdateForm) throws Exception {
+    public ResponseEntity<Map<String, String >> updateDog(@PathVariable int id, @RequestBody @Valid DogUpdateForm dogUpdateForm) throws Exception {
         dogService.updateDog(id, dogUpdateForm.getName(), dogUpdateForm.getDogSex(), dogUpdateForm.getAge(), dogUpdateForm.getDogBreed(), dogUpdateForm.getRegion());
         return ResponseEntity.ok(Map.of("message", "dog successfully updated"));
     }
