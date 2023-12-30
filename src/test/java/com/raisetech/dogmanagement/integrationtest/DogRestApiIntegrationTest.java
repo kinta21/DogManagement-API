@@ -39,7 +39,7 @@ public class DogRestApiIntegrationTest {
         @Test
         @DataSet(value = "databases/dogs.yml")
         @Transactional
-        void 存在するIDを指定した際にステータスコード200を返すこと()throws Exception{
+        void 存在するIDを指定した場合ステータスコード200を返すこと()throws Exception{
          String response = mockMvc.perform(MockMvcRequestBuilders.get("/dogs/{id}",1 ))
                  .andExpect(status().isOk())
                  .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
@@ -60,7 +60,7 @@ public class DogRestApiIntegrationTest {
         @Test
         @DataSet(value = "databases/dogs.yml")
         @Transactional
-        void 指定したIDが存在しない時ステータスコード404を返すこと() throws Exception {
+        void 指定したIDの犬の情報が存在しない場合ステータスコード404を返すこと() throws Exception {
             String response =
                     mockMvc.perform(MockMvcRequestBuilders.get("/dogs/{id}", 99))
                             .andExpect(status().isNotFound())
@@ -88,7 +88,7 @@ public class DogRestApiIntegrationTest {
         @DataSet(value = "databases/dogs.yml")
         @ExpectedDataSet(value = "databases/createdog.yml", ignoreCols = "id")
         @Transactional
-        void 犬の情報を新規登録できること() throws Exception{
+        void 犬の情報を新規登録した場合ステータスコードが201を返すこと() throws Exception{
             String response =
                     mockMvc.perform(MockMvcRequestBuilders.post("/dogs")
                                     .contentType(MediaType.APPLICATION_JSON)
@@ -124,7 +124,7 @@ public class DogRestApiIntegrationTest {
         @DataSet(value = "databases/dogs.yml")
         @ExpectedDataSet(value = "databases/updatedog.yml")
         @Transactional
-        void 指定したidの犬の情報が更新できること()throws Exception{
+        void 指定したidの犬の情報が更新された場合ステータスコード200を返すこと()throws Exception{
             String response =
                     mockMvc.perform(MockMvcRequestBuilders.patch("/dogs/1")
                                     .contentType(MediaType.APPLICATION_JSON)
@@ -150,7 +150,7 @@ public class DogRestApiIntegrationTest {
 
         @Test
         @Transactional
-        void 指定したidが存在しないとき更新した時ステータスコード404を返すこと() throws Exception {
+        void 存在しないIDの犬の情報を更新した場合ステータスコード404を返すこと() throws Exception {
             String response = mockMvc.perform(MockMvcRequestBuilders.patch("/dogs/{id}", 99)
                             .contentType(MediaType.APPLICATION_JSON)
                             .content("""
@@ -267,6 +267,46 @@ public class DogRestApiIntegrationTest {
                                "instance": "/dogs/1"
                              }
                              """, response, JSONCompareMode.STRICT);
+        }
+    }
+
+    @Nested
+    class DeleteDogTest {
+
+        @Test
+        @DataSet(value = "databases/dogs.yml")
+        @ExpectedDataSet(value = "databases/deletedog.yml")
+        @Transactional
+        void 指定したIDの犬の情報が削除された場合ステータスコード200が返されること()throws Exception {
+            String response = mockMvc.perform(MockMvcRequestBuilders.delete("/dogs/{id}", 1))
+                    .andExpect(MockMvcResultMatchers.status().isOk())
+                    .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
+
+            JSONAssert.assertEquals("""
+                    {
+                        "message": "dog successfully delete"
+                    }
+                    """, response, JSONCompareMode.STRICT);
+        }
+
+        @Test
+        @Transactional
+        void 存在しないIDの犬の情報を削除した場合ステータスコードは404を返すこと() throws Exception {
+            String response = mockMvc.perform(MockMvcRequestBuilders.delete("/dogs/{id}", 99))
+                    .andExpect(status().isNotFound())
+                    .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
+
+            JSONAssert.assertEquals("""
+                    {
+                         "error": "Not Found",
+                         "timestamp": "2023-12-29T18:23:40.237795+09:00[Asia/Tokyo]",
+                         "message": "resource not found",
+                         "status": "404",
+                         "path": "/dogs/99"
+                     }
+                    """, response,
+                    new CustomComparator(JSONCompareMode.STRICT,
+                            new Customization("timestamp", ((o1, o2) -> true))));
         }
     }
 }
