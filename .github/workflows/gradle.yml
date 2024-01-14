@@ -41,9 +41,24 @@ jobs:
         run: ./gradlew test
         if: always()
 
+      - name: Run check style
+        uses: nikitasavinov/checkstyle-action@master
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: 'github-pr-check'
+          tool_name: 'reviewdog'
+          checkstyle_config: 'config/checkstyle/checkstyle.xml'
+          workdir: 'src/main'
+          level: error
+
       - name: Discord Notification
         uses: sarisia/actions-status-discord@v1
         if: always()
         with:
-              webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          status: ${{ job.status }}
+          title: "Continuous Integration"
+          url: "https://github.com/sarisia/actions-status-discord"
+          username: GitHub Actions
 
