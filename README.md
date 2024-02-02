@@ -20,6 +20,7 @@
 - 自動テスト
 - CI (Checkstyle, Discordへの通知, 自動テスト実行)
 ## アプリケーション機能一覧
+
 ## DB定義
 ## GitHub Actionsを使用したCIの実装
 - checkstyleのチェック
@@ -28,3 +29,4 @@
 
 ### 自動テスト
 ### Discordへのテスト結果通知
+![スクリーンショット 2024-02-02 18 23 08](https://github.com/kinta21/DogManagement-API/assets/141032732/a2763477-6234-4371-bd5c-0e84783560fd)
