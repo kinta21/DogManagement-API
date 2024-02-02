@@ -12,16 +12,32 @@
 ## 使用技術
 ### バックエンド
 - Java 17.0.8
-- SpringBoot 
+- SpringBoot 3.1.4
 - MyBatis
 ### その他
-- MySQL 
-- Docker 
+- MySQL 8.0.35 
+- Docker 24.0.5
 - 自動テスト
 - CI (Checkstyle, Discordへの通知, 自動テスト実行)
 ## アプリケーション機能一覧
-
+|  機能 |  詳細 |  URL  |
+| ---- | ---- | ---- |
+|  検索  |  IDを指定して検索する  |  /dogs/{id}  |
+|  作成  |  犬の情報を新規登録する  |  /dogs  |
+|  更新  |  指定したIDの犬の情報を更新する  |  /dogs/{id}  |
+|  削除  |  指定したIDの犬の情報を削除する  |  /dogs/{id}  |
 ## DB定義
+テーブル名 dogs_database
+
+|  カラム  |  データ型  |  キー  |  NOTNULL  |  備考  |
+| ---- | ---- | ---- | ---- | ---- |
+|  id  |  int  |  PRIMARY KEY  |    |  登録ID |
+|  name  |  VARCHAR(20)  |    |  NOT NULL  |  名前  |
+|  dogSex  |  VARCHAR(20)  |    |  NOT NULL  |  性別  |
+|  age  |  VARCHAR(20)  |    |  NOT NULL  |  年齢  |
+|  dogBreed  |  VARCHAR(20) |    |  NOT NULL  |  犬種  |
+|  region  |  VARCHAR(20)  |    |  NOT NULL  |  所在地域  |
+
 ## GitHub Actionsを使用したCIの実装
 - checkstyleのチェック
 - discordへの通知
