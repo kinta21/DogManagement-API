@@ -10,7 +10,8 @@
 
 ## API仕様書
 ## アプリケーション概要図
-![アプリケーション概要図](https://github.com/kinta21/DogManagement-API/assets/141032732/23c213ce-60df-447a-a013-8436333cb188)
+![スクリーンショット 2024-02-08 21 03 40](https://github.com/kinta21/DogManagement-API/assets/141032732/73b92d65-ed4e-4760-92bc-18db022e9d7e)
+
 
 ## 使用技術
 ### バックエンド
